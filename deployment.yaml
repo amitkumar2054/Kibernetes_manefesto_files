@@ -14,7 +14,7 @@ spec: # defines the deployment behavior
     spec: # Defines the POD behavior
       containers:
       - name: cart-app
-        image: muralisocial/flower-app:1.0
+        image: muralisocial123/flower-app:1.0
         resources:
           limits:
             memory: "250Mi"
