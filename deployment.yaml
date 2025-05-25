@@ -2,15 +2,15 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: flower-app-deployment
-spec: # defines the POD behavior
+spec: # defines the deployment behavior
   replicas: 3
   selector:
     matchLabels:
-      app: web
+      app: amit
   template:
     metadata:
       labels:
-        app: web
+        app: amit
     spec: # Defines the POD behavior
       containers:
       - name: cart-app
@@ -24,3 +24,18 @@ spec: # defines the POD behavior
             cpu: "50m"
         ports:
         - containerPort: 3015
+---
+# writing a service.yml file to expose the application
+apiVersion: v1
+kind: Service
+metadata:
+  name: amit-netflix-app-service
+spec:
+  selector:
+    app: amit
+  ports:
+  - port: 3016 # service port
+    targetPort: 3015 # container port
+  type: LoadBalancer # type of service
+
+
