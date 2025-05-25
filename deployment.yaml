@@ -1,0 +1,26 @@
+apiVersion: app/v1
+kind: Deployment
+metadata:
+  name: flower-app-deployment
+spec: # defines the POD behavior
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec: # Defines the POD behavior
+      containers:
+      - name: cart-app
+        image: muralisocial/flower-app:1.0
+        resources:
+          limits:
+            memory: "250Mi"
+            cpu: "100m"
+          requests:
+            memory: "128Mi"
+            cpu: "50m"
+        ports:
+        - containerPort: 3015
